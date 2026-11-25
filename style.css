@@ -8,6 +8,7 @@
   --brown: #4A3427;      /* main text */
   --soft: #7A6555;       /* lighter text */
   --line: rgba(74, 52, 39, 0.12);
+  --panel: #F3E4D3;      /* tinted area behind app screenshots */
   --shadow: 0 1px 2px rgba(74, 52, 39, 0.06), 0 8px 24px rgba(74, 52, 39, 0.06);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -22,6 +23,7 @@
     --brown: #F3E8D8;
     --soft: #B8A592;
     --line: rgba(243, 232, 216, 0.12);
+    --panel: #3A2E25;
     --shadow: none;
     color-scheme: dark;
   }
@@ -116,12 +118,34 @@ img { max-width: 100%; }
   padding-bottom: 72px;
 }
 .feature {
+  display: flex;
+  flex-direction: column;
   background: var(--card);
   border-radius: 18px;
-  padding: 26px 24px;
+  overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--line);
 }
+/* App screenshot, shown as the top of a phone screen rising from a tinted panel */
+.shot {
+  background: var(--panel);
+  padding: 28px 28px 0;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top;
+  margin: 0 auto;
+  border-radius: 22px 22px 0 0;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  box-shadow: 0 -2px 18px rgba(74, 52, 39, 0.10);
+}
+.feature-text { padding: 22px 24px 26px; }
 .feature h2 { font-size: 19px; margin: 0 0 8px; line-height: 1.3; }
 .feature p { margin: 0; color: var(--soft); font-size: 16px; }
 @media (max-width: 760px) {
