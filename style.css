@@ -1,0 +1,177 @@
+/* Bean website. Same colours as the app (Bean/Theme.swift), with a
+   day and a night version. Uses Apple's own system font (San Francisco). */
+:root {
+  --cream: #FBF5EA;      /* page background */
+  --card: #FFFDF8;       /* card background */
+  --terracotta: #A9553A; /* accent */
+  --on-accent: #FFFFFF;
+  --brown: #4A3427;      /* main text */
+  --soft: #7A6555;       /* lighter text */
+  --line: rgba(74, 52, 39, 0.12);
+  --shadow: 0 1px 2px rgba(74, 52, 39, 0.06), 0 8px 24px rgba(74, 52, 39, 0.06);
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #1E1813;
+    --card: #2B231C;
+    --terracotta: #E08A6B;
+    --on-accent: #1E1813;
+    --brown: #F3E8D8;
+    --soft: #B8A592;
+    --line: rgba(243, 232, 216, 0.12);
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--terracotta); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--terracotta); outline-offset: 3px; border-radius: 4px; }
+img { max-width: 100%; }
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* Top bar */
+.nav {
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 14px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brown);
+  font-weight: 600;
+  font-size: 19px;
+}
+.brand:hover { text-decoration: none; }
+.brand img { width: 30px; height: 30px; border-radius: 7px; }
+.nav-links { display: flex; gap: 22px; font-size: 15px; }
+.nav-links a { color: var(--soft); }
+.nav-links a[aria-current="page"] { color: var(--brown); font-weight: 600; }
+
+/* Home: hero */
+.hero { text-align: center; padding-block: 72px 56px; }
+.hero .icon {
+  width: 128px; height: 128px;
+  border-radius: 29px;
+  box-shadow: var(--shadow);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 28px 0 12px;
+}
+.hero .tagline {
+  font-size: clamp(20px, 3vw, 24px);
+  color: var(--soft);
+  max-width: 30ch;
+  margin: 0 auto;
+  text-wrap: balance;
+}
+.pill {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--terracotta);
+  color: var(--terracotta);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Home: three promises */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding-bottom: 72px;
+}
+.feature {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 26px 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+}
+.feature h2 { font-size: 19px; margin: 0 0 8px; line-height: 1.3; }
+.feature p { margin: 0; color: var(--soft); font-size: 16px; }
+@media (max-width: 760px) {
+  .features { grid-template-columns: 1fr; }
+  .hero { padding-block: 48px 40px; }
+}
+
+/* Text pages (Privacy, Support) */
+.doc { max-width: 680px; padding-block: 56px 72px; }
+.doc h1 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+.doc .updated { color: var(--soft); margin: 0 0 32px; font-size: 15px; }
+.doc h2 { font-size: 21px; margin: 40px 0 8px; line-height: 1.3; }
+.doc p, .doc li { margin: 0 0 12px; }
+.doc ul { padding-left: 22px; margin: 0 0 12px; }
+.summary {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+}
+.summary p:last-child { margin-bottom: 0; }
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 8px;
+}
+.contact-card .label { color: var(--soft); font-size: 15px; margin: 0 0 4px; }
+.contact-card .email { font-size: clamp(19px, 5vw, 22px); font-weight: 600; overflow-wrap: break-word; }
+.faq dt { font-weight: 600; margin-top: 20px; }
+.faq dd { margin: 4px 0 0; color: var(--soft); }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); color: var(--soft); font-size: 14px; }
+.footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 24px 32px;
+}
+.footer nav { display: flex; gap: 20px; }
+.footer a { color: var(--soft); }
